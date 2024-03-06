@@ -59,6 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
       scrub: 1.8, // 스크롤 동기화 여부, true일 경우 스크롤 타이밍에 맞춰 애니메이션 실행, 시간 적용 시 지정된 시간 만큼 지연 후 애니메이션 실행
       // markers: true, // 디버깅을 위한 마커 표시
     },
+    about: {
+      trigger: ".about",
+      start: "top bottom",
+      scrub: 1.8,
+    },
   };
 
   function headerAnimation(xValue) {
@@ -103,6 +108,15 @@ document.addEventListener("DOMContentLoaded", function () {
       rotate: -720,
     });
   }
+
+  function aboutAnimation() {
+    tl.from(".about-img", {
+      scrollTrigger: commonScrollTrigger.about,
+      yPercent: 80,
+    });
+  }
+
+  aboutAnimation();
 
   const Width = window.outerWidth;
   console.log(Width);
