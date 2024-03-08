@@ -143,6 +143,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   aboutAnimation();
 
+  function benefitsAnimation() {
+    const benefits_nums = gsap.utils.toArray(".benefits_num");
+
+    benefits_nums.forEach((num) => {
+      const data_speed = num.getAttribute("data-speed");
+      console.log(data_speed);
+    });
+  }
+
+  benefitsAnimation();
+
   const Width = window.outerWidth;
   console.log(Width);
 
