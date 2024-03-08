@@ -33,7 +33,7 @@ typeWriter(); // typeWriter 함수 실행
 document.addEventListener("DOMContentLoaded", function () {
   // html 파일 내 요소들이 모두 로드되었을 때 실행
   // luxy init
-  luxy.init();
+  // luxy.init({ wrapperSpeed: 0.9 });
 
   // ========== GSAP EFFECT ==========
   gsap.registerPlugin(ScrollTrigger); // gsap scrollTrigger 플러그인 등록
@@ -65,6 +65,21 @@ document.addEventListener("DOMContentLoaded", function () {
       scrub: 1.8,
     },
   };
+
+  // 사각형 회전 애니메이션
+  // const titleSquare = document.querySelector(".title-square");
+  const titleSquares = gsap.utils.toArray(".title-square");
+
+  titleSquares.forEach((square) => {
+    tl.from(square, {
+      scrollTrigger: {
+        trigger: square,
+        start: "top bottom",
+        scrub: 1.8,
+      },
+      rotate: 760,
+    });
+  });
 
   function headerAnimation(xValue) {
     // 이미지 애니메이션
@@ -114,6 +129,16 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: commonScrollTrigger.about,
       yPercent: 80,
     });
+
+    tl.from(".about-img img", {
+      scrollTrigger: commonScrollTrigger.about,
+      scale: 1.6,
+    });
+
+    tl.to(".about-text", {
+      scrollTrigger: commonScrollTrigger.about,
+      yPercent: 50,
+    });
   }
 
   aboutAnimation();
@@ -129,3 +154,15 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // =================================
+
+const arr = ["홍콩반점", "오복성", "동보성"]; // 배열
+
+console.log(arr[0]);
+
+const obj = {
+  홍콩반점: ["짜장면: 5000", "짬뽕: 6000"],
+  오복성: ["짜장면", "짬뽕"],
+  동보성: ["짜장면", "짬뽕"],
+};
+
+console.log(obj.홍콩반점[0]);
