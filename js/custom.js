@@ -64,6 +64,11 @@ document.addEventListener("DOMContentLoaded", function () {
       start: "top bottom",
       scrub: 1.8,
     },
+    benefits: {
+      trigger: ".benefits_lists",
+      start: "top bottom",
+      scrub: 1.8,
+    },
   };
 
   // 사각형 회전 애니메이션
@@ -148,7 +153,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     benefits_nums.forEach((num) => {
       const data_speed = num.getAttribute("data-speed");
-      console.log(data_speed);
+      // console.log(1 - parseFloat(data_speed));
+
+      tl.from(num, {
+        scrollTrigger: commonScrollTrigger.about,
+        x: -data_speed,
+      });
     });
   }
 
