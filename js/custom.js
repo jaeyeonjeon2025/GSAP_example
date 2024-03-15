@@ -69,6 +69,25 @@ document.addEventListener("DOMContentLoaded", function () {
       start: "top bottom",
       scrub: 1.8,
     },
+    work: {
+      // work라는 섹션에 접근했을 때 시작하는 것
+      trigger: ".work",
+      start: "top bottom",
+      scrub: 1.8,
+    },
+    service: {
+      // service라는 섹션에 접근했을 때 시작하는 것
+      trigger: ".service",
+      start: "top bottom",
+      end: "bottom bottom",
+      scrub: 1.8,
+    },
+    footer: {
+      // footer에 접근했을 때 시작하는 것
+      trigger: ".footer",
+      start: "top bottom",
+      scrub: 1.8,
+    },
   };
 
   // 사각형 회전 애니메이션
@@ -163,6 +182,57 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   benefitsAnimation();
+
+  function workAnimation() {
+    const work_elmts = gsap.utils.toArray(".work-item, .work-item-num");
+    console.log(work_elmts);
+
+    work_elmts.forEach((num) => {
+      const data_speed = num.getAttribute("data-speed");
+
+      tl.from(num, {
+        scrollTrigger: commonScrollTrigger.work,
+        y: -data_speed,
+      });
+    });
+
+    tl.from(".work-item-image img", {
+      scrollTrigger: commonScrollTrigger.work,
+      scale: 1.6,
+    });
+  }
+
+  workAnimation();
+
+  function serviceAnimation() {
+    const arrow_elmts = gsap.utils.toArray(".service-arrow");
+
+    arrow_elmts.forEach((num) => {
+      const data_speed = num.getAttribute("data-speed");
+
+      tl.from(num, {
+        scrollTrigger: commonScrollTrigger.service,
+        x: -data_speed,
+      });
+    });
+  }
+
+  serviceAnimation();
+
+  function footerAnimation() {
+    const letter_elmts = gsap.utils.toArray(".footer-wrapper span");
+
+    letter_elmts.forEach((num) => {
+      const data_speed = num.getAttribute("data-speed");
+
+      tl.from(num, {
+        scrollTrigger: commonScrollTrigger.footer,
+        y: -data_speed,
+      });
+    });
+  }
+
+  footerAnimation();
 
   const Width = window.outerWidth;
   console.log(Width);
